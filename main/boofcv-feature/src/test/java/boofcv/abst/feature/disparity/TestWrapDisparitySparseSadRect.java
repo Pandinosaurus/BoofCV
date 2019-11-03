@@ -18,8 +18,8 @@
 
 package boofcv.abst.feature.disparity;
 
-import boofcv.alg.feature.disparity.impl.ImplDisparitySparseScoreBM_SAD_F32;
-import boofcv.alg.feature.disparity.impl.ImplSelectSparseBasicWta_F32;
+import boofcv.alg.feature.disparity.blockmatch.impl.ImplDisparitySparseScoreBM_SAD_F32;
+import boofcv.alg.feature.disparity.blockmatch.impl.ImplSelectSparseBasicWta_F32;
 import boofcv.factory.feature.disparity.ConfigureDisparityBM;
 import boofcv.factory.feature.disparity.DisparityError;
 import boofcv.factory.feature.disparity.FactoryStereoDisparity;

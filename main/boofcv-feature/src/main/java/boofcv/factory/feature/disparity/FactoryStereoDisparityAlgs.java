@@ -21,7 +21,8 @@ package boofcv.factory.feature.disparity;
 import boofcv.alg.feature.disparity.DisparitySelect;
 import boofcv.alg.feature.disparity.DisparitySparseScoreSadRect;
 import boofcv.alg.feature.disparity.DisparitySparseSelect;
-import boofcv.alg.feature.disparity.impl.*;
+import boofcv.alg.feature.disparity.blockmatch.SelectSparseStandardSubpixel;
+import boofcv.alg.feature.disparity.blockmatch.impl.*;
 import boofcv.struct.image.GrayF32;
 import boofcv.struct.image.GrayU8;
 
