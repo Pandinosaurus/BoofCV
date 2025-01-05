@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024, Peter Abeles. All Rights Reserved.
+ * Copyright (c) 2025, Peter Abeles. All Rights Reserved.
  *
  * This file is part of BoofCV (http://boofcv.org).
  *
@@ -77,6 +77,16 @@ public class PackedBigArrayPoint4D_F64 extends PackedBigArray_F64<Point4D_F64> {
 		array.add(w);
 	}
 
+	public void set( int index, double x, double y, double z, double w ) {
+		index *= DOF;
+		double[] block = array.getBlocks().get(index/array.getBlockSize());
+		int where = index%array.getBlockSize();
+		block[where] = x;
+		block[where + 1] = y;
+		block[where + 2] = z;
+		block[where + 3] = w;
+	}
+
 	@Override public void append( Point4D_F64 element ) {
 		array.add(element.x);
 		array.add(element.y);
@@ -88,10 +98,10 @@ public class PackedBigArrayPoint4D_F64 extends PackedBigArray_F64<Point4D_F64> {
 		index *= DOF;
 		double[] block = array.getBlocks().get(index/array.getBlockSize());
 		int where = index%array.getBlockSize();
-		element.x = block[where];
-		element.y = block[where + 1];
-		element.z = block[where + 2];
-		element.w = block[where + 3];
+		block[where] = element.x;
+		block[where + 1] = element.y;
+		block[where + 2] = element.z;
+		block[where + 3] = element.w;
 	}
 
 	@Override public Point4D_F64 getTemp( int index ) {

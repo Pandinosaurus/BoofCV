@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024, Peter Abeles. All Rights Reserved.
+ * Copyright (c) 2025, Peter Abeles. All Rights Reserved.
  *
  * This file is part of BoofCV (http://boofcv.org).
  *
@@ -44,6 +44,13 @@ public class PackedArrayPoint3D_F64 extends PackedArray_F64<Point3D_F64> {
 		array.add(x);
 		array.add(y);
 		array.add(z);
+	}
+
+	public void set( int index, double x, double y, double z ) {
+		index *= 3;
+		array.data[index++] = x;
+		array.data[index++] = y;
+		array.data[index] = z;
 	}
 
 	@Override public void set( int index, Point3D_F64 element ) {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024, Peter Abeles. All Rights Reserved.
+ * Copyright (c) 2025, Peter Abeles. All Rights Reserved.
  *
  * This file is part of BoofCV (http://boofcv.org).
  *
@@ -37,6 +37,12 @@ public class PackedArrayPoint2D_F64 extends PackedArray_F64<Point2D_F64> {
 	public final void append( double x, double y ) {
 		array.add(x);
 		array.add(y);
+	}
+
+	public void set( int index, double x, double y ) {
+		index *= 2;
+		array.data[index++] = x;
+		array.data[index] = y;
 	}
 
 	@Override public void append( Point2D_F64 element ) {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024, Peter Abeles. All Rights Reserved.
+ * Copyright (c) 2025, Peter Abeles. All Rights Reserved.
  *
  * This file is part of BoofCV (http://boofcv.org).
  *
@@ -156,7 +156,15 @@ public abstract class GenericPackedArrayChecks<T> extends BoofStandardJUnit {
 		alg.append(createRandomPoint());
 
 		var p = createRandomPoint();
+		var copy = createRandomPoint();
+		alg.copy(p, copy);
+
 		alg.set(1, p);
+
+		// make sure set isn't writing to 'p'. yes this was a bug
+		checkEquals(p, copy);
+
+		// Retrieve the value and see if it's the same
 		T found = alg.getTemp(1);
 		checkEquals(p, found);
 	}

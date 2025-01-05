@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024, Peter Abeles. All Rights Reserved.
+ * Copyright (c) 2025, Peter Abeles. All Rights Reserved.
  *
  * This file is part of BoofCV (http://boofcv.org).
  *
@@ -82,13 +82,22 @@ public class PackedBigArrayPoint3D_F64 extends PackedBigArray_F64<Point3D_F64> {
 		append(element.x, element.y, element.z);
 	}
 
+	public void set( int index, double x, double y, double z ) {
+		index *= DOF;
+		double[] block = array.getBlocks().get(index/array.getBlockSize());
+		int where = index%array.getBlockSize();
+		block[where] = x;
+		block[where + 1] = y;
+		block[where + 2] = z;
+	}
+
 	@Override public void set( int index, Point3D_F64 element ) {
 		index *= DOF;
 		double[] block = array.getBlocks().get(index/array.getBlockSize());
 		int where = index%array.getBlockSize();
-		element.x = block[where];
-		element.y = block[where + 1];
-		element.z = block[where + 2];
+		block[where] = element.x;
+		block[where + 1] = element.y;
+		block[where + 2] = element.z;
 	}
 
 	/**

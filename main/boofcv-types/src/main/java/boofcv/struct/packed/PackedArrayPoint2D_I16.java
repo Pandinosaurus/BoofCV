@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024, Peter Abeles. All Rights Reserved.
+ * Copyright (c) 2025, Peter Abeles. All Rights Reserved.
  *
  * This file is part of BoofCV (http://boofcv.org).
  *
@@ -54,6 +54,12 @@ public class PackedArrayPoint2D_I16 implements PackedArray<Point2D_I16> {
 	public final void append( int x, int y ) {
 		array.add(x);
 		array.add(y);
+	}
+
+	public void set( int index, int x, int y ) {
+		index *= 2;
+		array.data[index++] = (short)x;
+		array.data[index] = (short)y;
 	}
 
 	@Override public void append( Point2D_I16 element ) {

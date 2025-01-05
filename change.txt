@@ -12,6 +12,8 @@ Version : 1.1.8
 
 - PackedArray
   * Added isEquals()
+  * Fixed bug where set(index, point) overwrite the value of `point`
+  * Added implementation specific variants of set( index , ... )
 
 ---------------------
 Date    : 2024/Oct/05

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024, Peter Abeles. All Rights Reserved.
+ * Copyright (c) 2025, Peter Abeles. All Rights Reserved.
  *
  * This file is part of BoofCV (http://boofcv.org).
  *
@@ -23,8 +23,7 @@ import georegression.struct.point.Point3D_F64;
 import org.ejml.UtilEjml;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestPackedArrayPoint3D_F64 extends GenericPackedArrayChecks<Point3D_F64> {
 
@@ -46,6 +45,14 @@ public class TestPackedArrayPoint3D_F64 extends GenericPackedArrayChecks<Point3D
 
 	@Override protected void checkNotEquals( Point3D_F64 a, Point3D_F64 b ) {
 		assertNotEquals(0.0, a.distance(b), UtilEjml.TEST_F64);
+	}
+
+	@Test void setIndex_values() {
+		var alg = new PackedArrayPoint3D_F64();
+		alg.append(1, 2, 3);
+		alg.append(2, 3, 4);
+		alg.set(1, -1, -2, -3);
+		assertTrue(alg.getTemp(1).isIdentical(-1, -2, -3));
 	}
 
 	@Test void appendValues() {
